@@ -278,6 +278,24 @@
               <local:TestScrollable/>
             </ScrollViewer>
           </TabItem>
+          <TabItem Header="EXCEPTION_TEST">
+              <StackPanel>
+              <ListBox Name="list" Items="{Binding Items}">
+                  
+              </ListBox>
+                  <ContentControl Content="{Binding #list.SelectedItem}">
+                      <ContentControl.DataTemplates>
+                          <DataTemplate DataType="vm:TestItem">
+                              <TabControl/>
+                          </DataTemplate>
+                          <DataTemplate DataType="vm:TestItem1">
+                              <TextBlock/>
+                          </DataTemplate>
+                      </ContentControl.DataTemplates>
+                  </ContentControl>
+              </StackPanel>
+
+          </TabItem>
       </TabControl>
     </Grid>
 </Window>

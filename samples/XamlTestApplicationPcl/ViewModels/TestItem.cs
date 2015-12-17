@@ -14,4 +14,13 @@ namespace XamlTestApplication.ViewModels
         public string Header { get; }
         public string SubHeader { get; }
     }
+
+    public class TestItem1 : TestItem
+    {
+        public TestItem1(string header, string subheader)
+            : base(header, subheader)
+        {
+
+        }
+    }
 }
