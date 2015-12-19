@@ -144,6 +144,14 @@
       <Project>{3E53A01A-B331-47F3-B828-4A5717E77A24}</Project>
       <Name>Perspex.Markup.Xaml</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Perspex.Xaml.Interactions\Perspex.Xaml.Interactions.csproj">
+      <Project>{ed03eead-938f-447b-bf0b-30857ae78bff}</Project>
+      <Name>Perspex.Xaml.Interactions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Perspex.Xaml.Interactivity\Perspex.Xaml.Interactivity.csproj">
+      <Project>{14006eb4-66e9-4b58-bf5f-5a1983bf4621}</Project>
+      <Name>Perspex.Xaml.Interactivity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Windows\Perspex.Direct2D1\Perspex.Direct2D1.csproj">
       <Project>{3E908F67-5543-4879-A1DC-08EACE79B3CD}</Project>
       <Name>Perspex.Direct2D1</Name>
