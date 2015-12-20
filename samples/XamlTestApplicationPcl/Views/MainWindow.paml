@@ -4,6 +4,7 @@
         xmlns:vm="clr-namespace:XamlTestApplication.ViewModels;assembly=XamlTestApplicationPcl"
         xmlns:i="clr-namespace:Perspex.Xaml.Interactivity;assembly=Perspex.Xaml.Interactivity"
         xmlns:ia="clr-namespace:Perspex.Xaml.Interactions.Core;assembly=Perspex.Xaml.Interactions"
+        xmlns:behaviors="clr-namespace:XamlTestApplication.Behaviors;assembly=XamlTestApplicationPcl"
         Title="XamlBehaviors Test Application" Width="800" Height="600">
     <Grid>
         <TabControl>
