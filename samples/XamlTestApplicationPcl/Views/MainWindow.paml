@@ -2,30 +2,48 @@
         xmlns="https://github.com/perspex"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:views="clr-namespace:XamlTestApplication.Views;assembly=XamlTestApplicationPcl"
+        xmlns:vm="clr-namespace:XamlTestApplication.ViewModels;assembly=XamlTestApplicationPcl"
         Title="Perspex Test Application" Width="800" Height="600">
-    
-    
 
-        <TabControl>
-            <TabItem Header="1111">
-                <StackPanel>
-                    <views:UserControl1/>
-                    <views:UserControl1/>
-                    <views:UserControl1/>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="222">
+    <Window.DataTemplates>
+        <DataTemplate DataType="vm:MainWindowViewModel">
+            <views:UserControl1/>
+        </DataTemplate>
+    </Window.DataTemplates>
+    
+    <!-- SAMPLE 1 -->
+    
+    <!--
+    <TabControl>
+        <TabItem Header="1111">
+            <StackPanel>
                 <views:UserControl1/>
-            </TabItem>
-        </TabControl>
+                <views:UserControl1/>
+                <views:UserControl1/>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="222">
+            <views:UserControl1/>
+        </TabItem>
+    </TabControl>
+    -->
 
+    <!-- SAMPLE 2 -->
 
-    
-    <!--<StackPanel>
+    <!--
+    <StackPanel>
         <views:UserControl1/>
         <views:UserControl1/>
         <views:UserControl1/>
-    </StackPanel>-->
+    </StackPanel>
+    -->
 
-    
+    <!-- SAMPLE 3 -->
+
+    <views:UserControl1/>
+
+    <!-- SAMPLE 4 -->
+
+    <!--<ContentControl Content="{Binding}"/>-->
+
 </Window>
