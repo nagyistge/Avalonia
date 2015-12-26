@@ -1,0 +1,14 @@
+﻿<UserControl xmlns="https://github.com/perspex">
+    <StackPanel>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+    </StackPanel>
+</UserControl>
