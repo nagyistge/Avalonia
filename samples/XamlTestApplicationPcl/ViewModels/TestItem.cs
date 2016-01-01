@@ -3,15 +3,34 @@
 
 namespace XamlTestApplication.ViewModels
 {
-    public class TestItem
+    public abstract class TestItemBase
     {
-        public TestItem(string header, string subheader)
+        public virtual object Header { get; }
+        public virtual string SubHeader { get; }
+    }
+
+    public class TestItem1 : TestItemBase
+    {
+        public TestItem1(string header, string subheader)
         {
             Header = header;
             SubHeader = subheader;
         }
 
-        public string Header { get; }
-        public string SubHeader { get; }
+        public new string Header { get; }
+        public override string SubHeader { get; }
     }
+
+    public class TestItem2 : TestItemBase
+    {
+        public TestItem2(string header, string subheader)
+        {
+            Header = header;
+            SubHeader = subheader;
+        }
+
+        public override object Header { get; }
+        public override string SubHeader { get; }
+    }
+
 }

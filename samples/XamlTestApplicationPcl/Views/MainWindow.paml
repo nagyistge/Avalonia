@@ -128,7 +128,7 @@
               <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                   <ListBox Items="{Binding Items}" SelectionMode="Multiple">
                       <ListBox.DataTemplates>
-                          <DataTemplate DataType="vm:TestItem">
+                          <DataTemplate DataType="vm:TestItemBase">
                               <StackPanel>
                                   <TextBlock Text="{Binding Header}" FontSize="24" />
                                   <TextBlock Text="{Binding SubHeader}" />

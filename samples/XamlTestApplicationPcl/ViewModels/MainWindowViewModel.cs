@@ -9,11 +9,16 @@ namespace XamlTestApplication.ViewModels
     {
         public MainWindowViewModel()
         {
-            Items = new List<TestItem>();
+            Items = new List<TestItemBase>();
 
-            for (int i = 0; i < 10; ++i)
+            for (int i = 0; i < 5; ++i)
             {
-                Items.Add(new TestItem($"Item {i}", $"Item {i} Value"));
+                Items.Add(new TestItem1($"Item1 {i}", $"Item1 {i} Value"));
+            }
+
+            for (int i = 0; i < 5; ++i)
+            {
+                Items.Add(new TestItem2($"Item2 {i}", $"Item2 {i} Value"));
             }
 
             Nodes = new List<TestNode>
@@ -52,7 +57,7 @@ namespace XamlTestApplication.ViewModels
             };
         }
 
-        public List<TestItem> Items { get; }
+        public List<TestItemBase> Items { get; }
         public List<TestNode> Nodes { get; }
     }
 }
