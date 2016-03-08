@@ -41,9 +41,25 @@ namespace Perspex.Controls
         public static readonly AttachedProperty<int> RowSpanProperty =
             PerspexProperty.RegisterAttached<Grid, Control, int>("RowSpan", 1);
 
-        private ColumnDefinitions _columnDefinitions;
+        /// <summary>
+        /// Defines the ColumnDefinitions property.
+        /// </summary>
+        public static readonly StyledProperty<ColumnDefinitions> ColumnDefinitionsProperty =
+            PerspexProperty.Register<Grid, ColumnDefinitions>(nameof(ColumnDefinitions), new ColumnDefinitions(), false, Data.BindingMode.OneWay);
 
-        private RowDefinitions _rowDefinitions;
+        /// <summary>
+        /// Defines the RowDefinitions property.
+        /// </summary>
+        public static readonly StyledProperty<RowDefinitions> RowDefinitionsProperty =
+            PerspexProperty.Register<Grid, RowDefinitions>(nameof(RowDefinitions), new RowDefinitions(), false, Data.BindingMode.OneWay);
+
+        /// <summary>
+        /// Initializes static members of the <see cref="Grid"/> class.
+        /// </summary>
+        static Grid()
+        {
+            AffectsMeasure(ColumnDefinitionsProperty, RowDefinitionsProperty);
+        }
 
         private Segment[,] _rowMatrix;
 
@@ -54,26 +70,8 @@ namespace Perspex.Controls
         /// </summary>
         public ColumnDefinitions ColumnDefinitions
         {
-            get
-            {
-                if (_columnDefinitions == null)
-                {
-                    ColumnDefinitions = new ColumnDefinitions();
-                }
-
-                return _columnDefinitions;
-            }
-
-            set
-            {
-                if (_columnDefinitions != null)
-                {
-                    throw new NotSupportedException("Reassigning ColumnDefinitions not yet implemented.");
-                }
-
-                _columnDefinitions = value;
-                _columnDefinitions.TrackItemPropertyChanged(_ => InvalidateMeasure());
-            }
+            get { return GetValue(ColumnDefinitionsProperty); }
+            set { SetValue(ColumnDefinitionsProperty, value); }
         }
 
         /// <summary>
@@ -81,26 +79,8 @@ namespace Perspex.Controls
         /// </summary>
         public RowDefinitions RowDefinitions
         {
-            get
-            {
-                if (_rowDefinitions == null)
-                {
-                    RowDefinitions = new RowDefinitions();
-                }
-
-                return _rowDefinitions;
-            }
-
-            set
-            {
-                if (_rowDefinitions != null)
-                {
-                    throw new NotSupportedException("Reassigning RowDefinitions not yet implemented.");
-                }
-
-                _rowDefinitions = value;
-                _rowDefinitions.TrackItemPropertyChanged(_ => InvalidateMeasure());
-            }
+            get { return GetValue(RowDefinitionsProperty); }
+            set { SetValue(RowDefinitionsProperty, value); }
         }
 
         /// <summary>
