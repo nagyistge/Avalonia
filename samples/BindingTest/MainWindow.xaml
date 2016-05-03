@@ -77,5 +77,36 @@
         <TextBox Text="{Binding Path=StringValue}"/>
       </StackPanel>
     </TabItem>
+    <TabItem Header="Items">
+      <ScrollViewer>
+        <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="50*,Auto,50*">
+          <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+            <MenuItem Header="+" Command="{Binding AddItemCommand}"/>
+          </Menu>
+          <GridSplitter Orientation="Vertical" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Width="6"/>
+          <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Text="StringValue"/>
+          <TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Text="Detail"/>
+          <ItemsControl VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="2" Items="{Binding Items}">
+            <ItemsControl.DataTemplates>
+              <DataTemplate DataType="vm:TestItem">
+                <Grid VerticalAlignment="Top">
+                  <TextBox VerticalAlignment="Center" Text="{Binding StringValue, Mode=TwoWay}"/>
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.DataTemplates>
+          </ItemsControl>
+          <ItemsControl VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="2" Items="{Binding Items}">
+            <ItemsControl.DataTemplates>
+              <DataTemplate DataType="vm:TestItem">
+                <Grid VerticalAlignment="Top" ColumnDefinitions="*,30">
+                  <TextBox VerticalAlignment="Center" Text="{Binding Detail, Mode=TwoWay}" Grid.Column="0"/>
+                  <Button VerticalAlignment="Center" Content="-" Grid.Column="1"/>
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.DataTemplates>
+          </ItemsControl>
+        </Grid>
+      </ScrollViewer>
+    </TabItem>
   </TabControl>
 </Window>

@@ -3,11 +3,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using ReactiveUI;
 using System.Reactive.Linq;
+using System.Collections.Immutable;
+using System.Collections.Generic;
 
 namespace BindingTest.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject
     {
+        private ImmutableArray<TestItem> _items;
         private string _booleanString = "True";
         private double _doubleValue = 5.0;
         private string _stringValue = "Simple Binding";
@@ -15,20 +18,20 @@ namespace BindingTest.ViewModels
 
         public MainWindowViewModel()
         {
-            Items = new ObservableCollection<TestItem>(
+            Items = new List<TestItem>(
                 Enumerable.Range(0, 20).Select(x => new TestItem
                 {
                     StringValue = "Item " + x,
                     Detail = "Item " + x + " details",
-                }));
+                })).ToImmutableArray();
 
             SelectedItems = new ObservableCollection<TestItem>();
 
             ShuffleItems = ReactiveCommand.Create();
             ShuffleItems.Subscribe(_ =>
             {
-                var r = new Random();
-                Items.Move(r.Next(Items.Count), 1);
+                //var r = new Random();
+                //Items.Move(r.Next(Items.Count), 1);
             });
 
             StringValueCommand = ReactiveCommand.Create();
@@ -37,9 +40,20 @@ namespace BindingTest.ViewModels
                 BooleanFlag = !BooleanFlag;
                 StringValue = param.ToString();
             });
+
+            AddItemCommand = ReactiveCommand.Create();
+            AddItemCommand.Subscribe(param =>
+            {
+                Items = Items.Add(new TestItem { StringValue = "Item", Detail = "Detail" });
+            });
         }
 
-        public ObservableCollection<TestItem> Items { get; }
+        public ImmutableArray<TestItem> Items
+        {
+            get { return _items; }
+            set { this.RaiseAndSetIfChanged(ref _items, value); }
+        }
+
         public ObservableCollection<TestItem> SelectedItems { get; }
         public ReactiveCommand<object> ShuffleItems { get; }
 
@@ -68,5 +82,6 @@ namespace BindingTest.ViewModels
         }
 
         public ReactiveCommand<object> StringValueCommand { get; }
+        public ReactiveCommand<object> AddItemCommand { get; }
     }
 }
