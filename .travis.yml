@@ -11,7 +11,7 @@ install:
   - mono .nuget/nuget.exe restore Avalonia.mono.sln
   - mono .nuget/nuget.exe install xunit.runner.console -Version 2.1.0 -OutputDirectory testrunner
 script:
-  - mdtool build c:Release Avalonia.mono.sln
+  - travis_wait 30 mdtool build c:Release Avalonia.mono.sln
   - mono ./testrunner/xunit.runner.console.2.1.0/tools/xunit.console.exe ./tests/Avalonia.Base.UnitTests/bin/Release/Avalonia.Base.UnitTests.dll
   - mono ./testrunner/xunit.runner.console.2.1.0/tools/xunit.console.exe ./tests/Avalonia.Controls.UnitTests/bin/Release/Avalonia.Controls.UnitTests.dll
   - mono ./testrunner/xunit.runner.console.2.1.0/tools/xunit.console.exe ./tests/Avalonia.Input.UnitTests/bin/Release/Avalonia.Input.UnitTests.dll
